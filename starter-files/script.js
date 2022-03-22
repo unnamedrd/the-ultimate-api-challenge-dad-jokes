@@ -13,16 +13,24 @@ function getDadJokes() {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", API_ENDPOINT);
     
+    xhr.setRequestHeader('Accept', 'application/json')
     xhr.responseType = 'json';
+
     xhr.onload = () => {
-        const data = xhr.response;
+        const data = xhr.response.joke;
+        
         console.log(data);
+        jokeDisplay(data);
     }
     xhr.send();
-
-    console.log("this button event listener is activated")
     
 };
+
+function jokeDisplay(data) {
+    joke.innerHTML = data
+    
+}
+
 
 /**
  * 1. Initialize an XMLHttpRequest constructor
