@@ -3,17 +3,19 @@ const API_ENDPOINT = "https://icanhazdadjoke.com/";
 const request = new XMLHttpRequest();
 const joke = document.querySelector('#joke');
 const button = document.querySelector('#button');
-const loader = document.querySelector('')
+const loader = document.querySelector('#loader')
 
 request.addEventListener("load", getDadJokes);
 request.open("GET", API_ENDPOINT);
-var data = JSON.parse(xhr.responseText);
+//var data = JSON.parse(request.responseText);
 request.send();
 
+button.addEventListener("click", getDadJokes)
 
 function getDadJokes() {
+    console.log("this button event listener is activated")
     
-}
+};
 
 /**
  * 1. Initialize an XMLHttpRequest constructor
