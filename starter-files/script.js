@@ -1,18 +1,25 @@
 
 const API_ENDPOINT = "https://icanhazdadjoke.com/";
-const request = new XMLHttpRequest();
+
 const joke = document.querySelector('#joke');
 const button = document.querySelector('#button');
 const loader = document.querySelector('#loader')
 
-request.addEventListener("load", getDadJokes);
-request.open("GET", API_ENDPOINT);
-//var data = JSON.parse(request.responseText);
-request.send();
+
 
 button.addEventListener("click", getDadJokes)
 
 function getDadJokes() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", API_ENDPOINT);
+    
+    xhr.responseType = 'json';
+    xhr.onload = () => {
+        const data = xhr.response;
+        console.log(data);
+    }
+    xhr.send();
+
     console.log("this button event listener is activated")
     
 };
